@@ -74,47 +74,47 @@ void PointerList::remove(int value)
         {
             if (tmp->value == value)
             {
-				if (head == tail)
-				{
-					delete tmp;
-					head = NULL;
-					tail = NULL;
+                if (head == tail)
+                {
+                    delete tmp;
+                    head = NULL;
+                    tail = NULL;
                     elementsCounter--;
-				}
-				else
-				{
-					ListElement *toDel = tmp;
-					if (tmp == head)
-					{
-						head = head->next;
-						head->prev = NULL;
-						tmp = head;
-					}
-					else if (tmp == tail)
-					{
-						tail = tmp->prev;
-						tail->next = NULL;
-					}
-					else
-					{
-						tmp->prev->next = tmp->next;
-						tmp->next->prev = tmp->prev;
-						tmp = tmp->next;
-					}
-					delete toDel;
+                }
+                else
+                {
+                    ListElement *toDel = tmp;
+                    if (tmp == head)
+                    {
+                        head = head->next;
+                        head->prev = NULL;
+                        tmp = head;
+                    }
+                    else if (tmp == tail)
+                    {
+                        tail = tmp->prev;
+                        tail->next = NULL;
+                    }
+                    else
+                    {
+                        tmp->prev->next = tmp->next;
+                        tmp->next->prev = tmp->prev;
+                        tmp = tmp->next;
+                    }
+                    delete toDel;
                     elementsCounter--;
-				}
+                }
                 return;
             }
             else if (i < elementsCounter - 1)
-				tmp = tmp->next;
+                tmp = tmp->next;
             i++;
         }
         if (!wasDeleted)
         {
             cout << "No value = " << value << "!" << endl;
         }
-	}
+    }
 }
 
 void PointerList::show()
@@ -139,12 +139,12 @@ void PointerList::show()
 PointerList::~PointerList()
 {
     while (elementsCounter > 1)
-	{
-		ListElement *toDel = head;
-		head = head->next;
-		head->prev = NULL;
-		delete toDel;
-		elementsCounter--;
-	}
-	delete head;
+    {
+        ListElement *toDel = head;
+        head = head->next;
+        head->prev = NULL;
+        delete toDel;
+        elementsCounter--;
+    }
+    delete head;
 }

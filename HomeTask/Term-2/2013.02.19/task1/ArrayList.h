@@ -14,7 +14,7 @@ private:
     int *array;
     const int additionalSize;
     int currentSize;
-	void swap (int &a, int &b);
+    void swap (int &a, int &b);
     void checkOverFlow();
 };
 

@@ -10,10 +10,9 @@ public:
     void remove(int value);
     void show();
     PointerList();
-	~PointerList();
+    ~PointerList();
 private:
     struct ListElement;
-
     bool isExist(int value);
     ListElement *head;
     ListElement *tail;

@@ -11,9 +11,9 @@ ArrayList::ArrayList() :
 
 void ArrayList::swap (int &a, int &b)
 {
-	a = a + b;
-	b = a - b;
-	a = a - b;
+    a = a + b;
+    b = a - b;
+    a = a - b;
 }
 
 void ArrayList::checkOverFlow()
@@ -21,7 +21,6 @@ void ArrayList::checkOverFlow()
     const int eps = 2;
     if (currentSize - elementsCounter <= eps)
     {
-
         int *newarray = new int[currentSize + additionalSize];
         for (int i = 0; i < currentSize; i++)
         {
@@ -64,7 +63,7 @@ void ArrayList::remove(int value)
     }
     if (index != -1)
     {
-		swap (array[index], array[elementsCounter - 1]);
+        swap (array[index], array[elementsCounter - 1]);
         elementsCounter--;
     }
     else
@@ -88,7 +87,7 @@ void ArrayList::show()
 
 ArrayList::~ArrayList()
 {
-	currentSize = 0;
+    currentSize = 0;
     elementsCounter = 0;
     delete []array;
 }
