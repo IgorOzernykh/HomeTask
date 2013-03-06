@@ -5,11 +5,6 @@ HeapSorter::HeapSorter(int *arrayToSort, int size) :
 {
 }
 
-HeapSorter::~HeapSorter()
-{
-
-}
-
 void HeapSorter::downheap(int *arr, int i, int n)
 {
     int child;
@@ -35,6 +30,8 @@ void HeapSorter::downheap(int *arr, int i, int n)
 }
 void HeapSorter::hSort(int *arr, int n)
 {
+    if (n == 1)
+        return;
     for (int i = n / 2; i >= 0; i--)
         downheap(arr, i, n - 1);
     for (int i = n - 2; i > 0; i--)

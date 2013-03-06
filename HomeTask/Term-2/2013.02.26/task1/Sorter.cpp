@@ -15,13 +15,6 @@ Sorter::~Sorter()
     delete []array;
 }
 
-void Sorter::swap(int &a, int &b)
-{
-    int c = a;
-    a = b;
-    b = c;
-}
-
 void Sorter::print()
 {
     for (int i = 0; i < arraySize; i++)

@@ -5,11 +5,6 @@ QuickSorter::QuickSorter(int *arrayToSort, int size) :
 {
 }
 
-QuickSorter::~QuickSorter()
-{
-}
-
-
 void QuickSorter::qSort (int *arr, int low, int high)
 {
     int i = low;

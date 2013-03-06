@@ -5,10 +5,6 @@ BubbleSorter::BubbleSorter(int *arrayToSort, int size) :
 {
 }
 
-BubbleSorter::~BubbleSorter()
-{
-}
-
 void BubbleSorter::bSort(int *arr, int arrSize)
 {
     for (int i = 0; i < arrSize - 1; i++)
