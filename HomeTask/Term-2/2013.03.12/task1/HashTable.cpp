@@ -43,7 +43,6 @@ void HashTable::add(string str, unsigned int quantity)
     }
 }
 
-
 void HashTable::remove(string str) throw (string)
 {
     unsigned long long int index = hash->hash(str) % HTsize;

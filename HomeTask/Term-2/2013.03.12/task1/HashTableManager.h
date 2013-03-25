@@ -1,4 +1,5 @@
 #pragma once
+
 #include "HashTable.h"
 
 class HashTableManager
@@ -6,11 +7,11 @@ class HashTableManager
 public:
     HashTableManager();
     ~HashTableManager();
+    void dialog();
+private:
     void showStatistics();
     void changeHash();
     void menu();
-    void dialog();
-private:
     HashTable *table;
     unsigned int HTsize;
     HashFunction *shash;

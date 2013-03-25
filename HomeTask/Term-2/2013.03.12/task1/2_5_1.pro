@@ -1,6 +1,7 @@
 TEMPLATE = app
 CONFIG += console qtestlib
 
+
 SOURCES += main.cpp \
     HashTable.cpp \
     HashFunction.cpp \

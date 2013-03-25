@@ -1,4 +1,5 @@
 #pragma once
+
 #include "ListElement.h"
 
 class List
@@ -10,10 +11,6 @@ public:
     void add(string str, unsigned int quantity);
     void remove(string str) throw (string);
     bool exists(string str);
-
-
-//protected:
-public:
     ListElement *head;
     ListElement *tail;
     unsigned int size;

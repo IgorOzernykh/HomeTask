@@ -1,4 +1,5 @@
 #pragma once
+
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
@@ -16,13 +17,9 @@ public:
         if (next != NULL)
             delete next;
     }
-
 public:
     string str;
     ListElement *prev;
     ListElement *next;
     int elemCounter;
-
-
-
 };

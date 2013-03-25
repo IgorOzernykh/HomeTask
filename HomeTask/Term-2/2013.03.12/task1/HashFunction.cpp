@@ -9,7 +9,6 @@ int HashFunction::getCode(char ch)
     return 0;
 }
 
-
 unsigned int SumHash::hash(string s)
 {
     unsigned int hashCode = 0;
@@ -22,7 +21,6 @@ unsigned int SumHash::hash(string s)
     }
     return (hashCode > 0)? hashCode : 0 - hashCode;
 }
-
 
 unsigned int XorHash::hash(string s)
 {

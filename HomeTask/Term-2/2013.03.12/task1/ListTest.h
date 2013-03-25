@@ -1,4 +1,5 @@
 #pragma once
+
 #include <QtCore/QObject>
 #include <QtTest/QtTest>
 #include "List.h"
@@ -6,14 +7,13 @@
 class ListTest : public QObject
 {
     Q_OBJECT
-public:
-    //explicit ListTest(QObject *parent = 0):QObject(parent) {}
-    ListTest() {list = new List;}
-    ~ListTest() {delete list;}
-
 private:
     List *list;
 private slots:
+    void init()
+    {
+        list = new List;
+    }
     void addTest()
     {
         list->add("one", 1);
@@ -28,6 +28,9 @@ private slots:
     }
     void isExistTest()
     {
+        list->add("one", 1);
+        list->add("two", 2);
+        list->add("three", 3);
         QVERIFY(list->exists("one") == true);
         QVERIFY(list->exists("two") == true);
         QVERIFY(list->exists("three") == true);
@@ -35,6 +38,9 @@ private slots:
 
     void removeTest()
     {
+        list->add("one", 1);
+        list->add("two", 2);
+        list->add("three", 3);
         list->remove("one");
         QVERIFY(list->head->str == "two");
         QVERIFY(list->head->prev == NULL);
@@ -47,5 +53,9 @@ private slots:
         QVERIFY(list->size == 1);
         list->remove("three");
         QVERIFY(list->size == 0);
+    }
+    void cleanup()
+    {
+        delete list;
     }
 };

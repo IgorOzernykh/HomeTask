@@ -97,6 +97,5 @@ void HashTableManager::dialog()
             cout << "Hash Function has successfully changed." << endl;
             break;
         }
-
     }
 }

@@ -10,7 +10,8 @@ List::List() :
 
 List::~List()
 {
-    delete head;
+    if (size > 0)
+        delete head;
 }
 
 bool List::isEmpty()
@@ -103,7 +104,6 @@ void List::remove(string str) throw (string)
     else
         throw string("No such word");
 }
-
 
 bool List::exists(string str)
 {
