@@ -1,6 +1,4 @@
 #include "ArrayList.h"
-#include <iostream>
-using namespace std;
 
 ArrayList::ArrayList() :
     additionalSize(20),
@@ -35,14 +33,13 @@ void ArrayList::checkOverFlow()
         return;
 }
 
-void ArrayList::add(int value)
+void ArrayList::add(int value) throw (string)
 {
     for (int i = 0; i < elementsCounter; i++)
     {
         if (array[i] == value)
         {
-            cout << "Value " << value << " in ArrayList is already exist!" << endl;
-            return;
+            throw string("Value is already exist in ArrayList - ", value);
         }
     }
     checkOverFlow();
@@ -50,7 +47,7 @@ void ArrayList::add(int value)
     elementsCounter++;
 }
 
-void ArrayList::remove(int value)
+void ArrayList::remove(int value) throw (string)
 {
     int index = -1;
     for (int i = 0; i < elementsCounter; i++)
@@ -67,10 +64,10 @@ void ArrayList::remove(int value)
         elementsCounter--;
     }
     else
-        cout << "No value = " << value << "!" << endl;
+        throw string("No value =", value);
 }
 
-void ArrayList::show()
+void ArrayList::show() throw (string)
 {
     if (elementsCounter != 0)
     {
@@ -82,7 +79,16 @@ void ArrayList::show()
         cout << endl;
     }
     else
-        cout << "Nothing to show! ArrayList is empty!" << endl;
+        throw string ("Nothing to show! ArrayList is empty!");
+}
+
+int &ArrayList::operator[](int index)
+{
+    if (index < 0)
+        return array[0];
+    if (index >= elementsCounter)
+        return array[elementsCounter - 1];
+    return array[index];
 }
 
 ArrayList::~ArrayList()

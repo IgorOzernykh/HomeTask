@@ -1,14 +1,8 @@
 #include "Stack.h"
 
-Stack::Stack()
-{
-    elementsCounter = 0;
-}
+Stack::Stack() : elementsCounter(0) {}
 
-Stack::~Stack()
-{
-
-}
+Stack::~Stack() {}
 
 int Stack::Calculator(string s)
 {

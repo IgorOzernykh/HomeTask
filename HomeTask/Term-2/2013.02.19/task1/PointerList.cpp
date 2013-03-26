@@ -1,6 +1,4 @@
 #include "PointerList.h"
-#include <iostream>
-using namespace std;
 
 struct PointerList::ListElement
 {
@@ -32,7 +30,7 @@ bool PointerList::isExist(int value)
     return false;
 }
 
-void PointerList::add(int value)
+void PointerList::add(int value) throw (string)
 {
     if (!isExist(value))
     {
@@ -54,11 +52,11 @@ void PointerList::add(int value)
         elementsCounter++;
     }
     else
-        cout << "Value = " << value << " is already exist in PointerList!" << endl;
+        throw string("Value is already exist in PointerList - ", value);
 }
 
 
-void PointerList::remove(int value)
+void PointerList::remove(int value) throw (string)
 {
     if (head == NULL)
     {
@@ -112,16 +110,16 @@ void PointerList::remove(int value)
         }
         if (!wasDeleted)
         {
-            cout << "No value = " << value << "!" << endl;
+            throw string("No value = ", value);
         }
     }
 }
 
-void PointerList::show()
+void PointerList::show() throw (string)
 {
     if (head == NULL)
     {
-        cout << "Nothing to show! PointerList is empty!" << endl;
+        throw string("Nothing to show! PointerList is empty!");
     }
     else
     {
@@ -134,6 +132,18 @@ void PointerList::show()
         }
         cout << temp->value << endl;
     }
+}
+
+int& PointerList::operator[](int index)
+{
+    if (index <= 0)
+        return head->value;
+    if (index >= elementsCounter)
+        return tail->value;
+    ListElement *temp = head;
+    for (int i = 0; i < index; i++)
+        temp = temp->next;
+    return temp->value;
 }
 
 PointerList::~PointerList()

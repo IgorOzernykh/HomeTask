@@ -6,9 +6,10 @@ class PointerList : public List
 {
 public:
 
-    void add(int value);
-    void remove(int value);
-    void show();
+    void add(int value) throw (string);
+    void remove(int value) throw (string);
+    void show() throw (string);
+    virtual int &operator[](int index);
     PointerList();
     ~PointerList();
 private:

@@ -1,16 +1,4 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2013-03-09T17:07:20
-#
-#-------------------------------------------------
-
-QT       += core
-
-QT       -= gui
-
-TARGET = 2-3-2
-CONFIG   += console
-CONFIG   -= app_bundle
+CONFIG   += console qtestlib
 
 TEMPLATE = app
 
@@ -24,4 +12,5 @@ HEADERS += \
     PrintInFile.h \
     PrintInConsole.h \
     ByPass.h \
-    Printer.h
+    Printer.h \
+    ByPassTest.h

@@ -30,3 +30,10 @@ int main()
     delete astack;
 }
 
+//#include "StackTest.h"
+
+//int main()
+//{
+//    StackTest test;
+//    QTest::qExec(&test);
+//}

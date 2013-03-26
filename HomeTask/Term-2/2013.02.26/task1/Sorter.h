@@ -16,7 +16,7 @@ public:
     /** Function that calls the sort function in each inherited class; */
     void print();
     /** Function that prints array; */
-protected:
+//protected:
     int *array;
     int arraySize;
 };

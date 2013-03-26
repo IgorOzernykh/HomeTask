@@ -11,9 +11,9 @@ public:
 
     Stack();
     virtual ~Stack();
+    virtual bool isEmpty() = 0;
 protected:
     int elementsCounter;
-    virtual bool isEmpty() = 0;
 public:
     int Calculator(string s);
 };

@@ -1,4 +1,6 @@
 #pragma once
+#include <stdlib.h>
+#include <time.h>
 #include <iostream>
 using namespace std;
 
@@ -16,7 +18,7 @@ public:
     virtual void sort() = 0;
     /** Function that prints array */
     void print();
-protected:
+//protected:
     int **array;
     int row;
     int column;
