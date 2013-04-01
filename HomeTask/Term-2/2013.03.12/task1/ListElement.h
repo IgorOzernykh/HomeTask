@@ -4,6 +4,9 @@
 #include <iostream>
 using namespace std;
 
+/** ListElement class interface.
+    Each element contains std::string and a counter to count repetitions of string */
+
 class ListElement
 {
 public:
@@ -17,7 +20,40 @@ public:
         if (next != NULL)
             delete next;
     }
-public:
+    ListElement *getNext()
+    {
+        return next;
+    }
+    void setNext(ListElement *newNext)
+    {
+        next = newNext;
+    }
+    ListElement *getPrev()
+    {
+        return prev;
+    }
+    void setPrev(ListElement *newPrev)
+    {
+        prev = newPrev;
+    }
+    string getStr()
+    {
+        return str;
+    }
+    void setStr(string newStr)
+    {
+        str = newStr;
+    }
+    int getElemCounter()
+    {
+        return elemCounter;
+    }
+    void setElemCounter(int newElemCounter)
+    {
+        elemCounter = newElemCounter;
+    }
+
+private:
     string str;
     ListElement *prev;
     ListElement *next;

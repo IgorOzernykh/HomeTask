@@ -26,31 +26,31 @@ void List::add (string str, unsigned int quantity)
         ListElement *temp = new ListElement(str);
         head = temp;
         tail = temp;
-        head->elemCounter += quantity;
+        head->setElemCounter(temp->getElemCounter() + quantity);
         size++;
     }
     else
     {
         ListElement *tmp = head;
-        while (tmp->next != NULL)
+        while (tmp->getNext() != NULL)
         {
-            if (tmp->str == str)
+            if (tmp->getStr() == str)
             {
-                tmp->elemCounter += quantity;
+                tmp->setElemCounter(tmp->getElemCounter() + quantity);
                 return;
             }
-            tmp = tmp->next;
+            tmp = tmp->getNext();
         }
-        if (tail->str == str)
+        if (tail->getStr() == str)
         {
-            tail->elemCounter += quantity;
+            tmp->setElemCounter(tmp->getElemCounter() + quantity);
             return;
         }
         else
         {
             ListElement *temp = new ListElement(str, tail, NULL);
-            temp->elemCounter += quantity;
-            tail->next = temp;
+            temp->setElemCounter(temp->getElemCounter() + quantity);
+            tail->setNext(temp);
             tail = temp;
             size++;
         }
@@ -61,34 +61,34 @@ void List::remove(string str) throw (string)
 {
     if (size >= 2)
     {
-        if (head->str == str)
+        if (head->getStr() == str)
         {
             ListElement *toDel = head;
-            head = head->next;
-            head->prev = NULL;
-            toDel->next = NULL;
+            head = head->getNext();
+            head->setPrev(NULL);
+            toDel->setNext(NULL);
             delete toDel;
             size--;
             return;
         }
-        ListElement *temp = head->next;
-        while(temp->next != NULL)
+        ListElement *temp = head->getNext();
+        while(temp->getNext() != NULL)
         {
-            if (temp->str == str)
+            if (temp->getStr() == str)
             {
-                temp->next->prev = temp->prev;
-                temp->prev->next = temp->next;
+                temp->getNext()->setPrev(temp->getPrev());
+                temp->getPrev()->setNext(temp->getNext());
                 delete temp;
                 size--;
                 return;
             }
-            temp = temp->next;
+            temp = temp->getNext();
         }
-        if (tail->str == str)
+        if (tail->getStr() == str)
         {
             ListElement *toDel = tail;
-            tail = tail->prev;
-            tail->next = NULL;
+            tail = tail->getPrev();
+            tail->setNext(NULL);
             size--;
             delete toDel;
             return;
@@ -108,14 +108,14 @@ void List::remove(string str) throw (string)
 bool List::exists(string str)
 {
     ListElement *temp = head;
-    while (temp->next != NULL)
+    while (temp->getNext() != NULL)
     {
-        if (str == temp->str)
+        if (str == temp->getStr())
         {
             return true;
         }
         else
-            temp = temp->next;
+            temp = temp->getNext();
     }
-    return temp->str == str;
+    return temp->getStr() == str;
 }

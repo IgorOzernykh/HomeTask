@@ -22,14 +22,14 @@ private slots:
     void addTest()
     {
         table->add("one", 1);
-        unsigned int key1 = table->hash->hash("one") % table->HTsize;
-        QVERIFY(table->table[key1]->head->str == "one");
+        unsigned int key1 = table->getHash()->hash("one") % table->getHTsize();
+        QVERIFY(table->getTableElement(key1)->getHead()->getStr() == "one");
         table->add("two", 1);
-        unsigned int key2 = table->hash->hash("two") % table->HTsize;
-        QVERIFY(table->table[key2]->head->str == "two");
+        unsigned int key2 = table->getHash()->hash("two") % table->getHTsize();
+        QVERIFY(table->getTableElement(key2)->getHead()->getStr() == "two");
         table->add("three", 1);
-        unsigned int key3 = table->hash->hash("three") % table->HTsize;
-        QVERIFY(table->table[key3]->head->str == "three");
+        unsigned int key3 = table->getHash()->hash("three") % table->getHTsize();
+        QVERIFY(table->getTableElement(key3)->getHead()->getStr() == "three");
     }
     void isExistTest()
     {
@@ -45,17 +45,17 @@ private slots:
         table->add("one", 1);
         table->add("two", 1);
         table->add("three", 1);
-        unsigned int oldkey1 = table->hash->hash("one") % table->HTsize;
-        unsigned int oldkey2 = table->hash->hash("two") % table->HTsize;
-        unsigned int oldkey3 = table->hash->hash("three") % table->HTsize;
+        unsigned int oldkey1 = table->getHash()->hash("one") % table->getHTsize();
+        unsigned int oldkey2 = table->getHash()->hash("two") % table->getHTsize();
+        unsigned int oldkey3 = table->getHash()->hash("three") % table->getHTsize();
         xhash = new XorHash;
         table->rebuildTable(100, xhash);
-        unsigned int key1 = table->hash->hash("one") % table->HTsize;
-        QVERIFY(table->table[key1]->head->str == "one");
-        unsigned int key2 = table->hash->hash("two") % table->HTsize;
-        QVERIFY(table->table[key2]->head->str == "two");
-        unsigned int key3 = table->hash->hash("three") % table->HTsize;
-        QVERIFY(table->table[key3]->head->str == "three");
+        unsigned int key1 = table->getHash()->hash("one") % table->getHTsize();
+        QVERIFY(table->getTableElement(key1)->getHead()->getStr() == "one");
+        unsigned int key2 = table->getHash()->hash("two") % table->getHTsize();
+        QVERIFY(table->getTableElement(key2)->getHead()->getStr() == "two");
+        unsigned int key3 = table->getHash()->hash("three") % table->getHTsize();
+        QVERIFY(table->getTableElement(key3)->getHead()->getStr() == "three");
         QVERIFY((key1 != oldkey1 || key2 != oldkey2 || key3 != oldkey3) == true);
     }
     void removeTest()
@@ -63,17 +63,17 @@ private slots:
         table->add("one", 1);
         table->add("two", 1);
         table->add("three", 1);
-        unsigned int key1 = table->hash->hash("one") % table->HTsize;
-        unsigned int key2 = table->hash->hash("two") % table->HTsize;
-        unsigned int key3 = table->hash->hash("three") % table->HTsize;
+        unsigned int key1 = table->getHash()->hash("one") % table->getHTsize();
+        unsigned int key2 = table->getHash()->hash("two") % table->getHTsize();
+        unsigned int key3 = table->getHash()->hash("three") % table->getHTsize();
         try
         {
             table->remove("one");
-            QVERIFY(table->table[key1]->isEmpty() == true);
+            QVERIFY(table->getTableElement(key1)->isEmpty() == true);
             table->remove("two");
-            QVERIFY(table->table[key2]->isEmpty() == true);
+            QVERIFY(table->getTableElement(key2)->isEmpty() == true);
             table->remove("three");
-            QVERIFY(table->table[key3]->isEmpty() == true);
+            QVERIFY(table->getTableElement(key3)->isEmpty() == true);
             table->remove("1");
         }
         catch (string exc)

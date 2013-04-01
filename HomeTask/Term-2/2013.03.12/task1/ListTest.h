@@ -19,12 +19,12 @@ private slots:
         list->add("one", 1);
         list->add("two", 2);
         list->add("three", 3);
-        QVERIFY(list->head->str == "one");
-        QVERIFY(list->head->next->str == "two");
-        QVERIFY(list->tail->str == "three");
-        QVERIFY(list->head->elemCounter == 1);
-        QVERIFY(list->head->next->elemCounter == 2);
-        QVERIFY(list->tail->elemCounter == 3);
+        QVERIFY(list->getHead()->getStr() == "one");
+        QVERIFY(list->getHead()->getNext()->getStr() == "two");
+        QVERIFY(list->getTail()->getStr() == "three");
+        QVERIFY(list->getHead()->getElemCounter() == 1);
+        QVERIFY(list->getHead()->getNext()->getElemCounter() == 2);
+        QVERIFY(list->getTail()->getElemCounter() == 3);
     }
     void isExistTest()
     {
@@ -42,17 +42,17 @@ private slots:
         list->add("two", 2);
         list->add("three", 3);
         list->remove("one");
-        QVERIFY(list->head->str == "two");
-        QVERIFY(list->head->prev == NULL);
-        QVERIFY(list->size == 2);
+        QVERIFY(list->getHead()->getStr() == "two");
+        QVERIFY(list->getHead()->getPrev() == NULL);
+        QVERIFY(list->getSize() == 2);
         list->remove("two");
-        QVERIFY(list->head->str == "three");
-        QVERIFY(list->head->prev == NULL);
-        QVERIFY(list->head->next == NULL);
-        QVERIFY(list->head == list->tail);
-        QVERIFY(list->size == 1);
+        QVERIFY(list->getHead()->getStr() == "three");
+        QVERIFY(list->getHead()->getPrev() == NULL);
+        QVERIFY(list->getHead()->getNext() == NULL);
+        QVERIFY(list->getHead() == list->getTail());
+        QVERIFY(list->getSize() == 1);
         list->remove("three");
-        QVERIFY(list->size == 0);
+        QVERIFY(list->getSize() == 0);
     }
     void cleanup()
     {

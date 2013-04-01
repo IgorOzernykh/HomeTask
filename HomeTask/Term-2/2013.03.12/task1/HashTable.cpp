@@ -32,16 +32,17 @@ void HashTable::add(string str, unsigned int quantity)
         LoadFactor += 1.0 / double(HTsize);
         return;
     }
-    unsigned int listSize = table[index]->size;
+    unsigned int listSize = table[index]->getSize();
     table[index]->add(str, quantity);
-    if (table[index]->size > listSize)
+    if (table[index]->getSize() > listSize)
     {
         Collisions++;
         ElemQuantity++;
-        if (MaxCollLength < table[index]->size - 1)
-            MaxCollLength = table[index]->size - 1;
+        if (MaxCollLength < table[index]->getSize() - 1)
+            MaxCollLength = table[index]->getSize() - 1;
     }
 }
+
 
 void HashTable::remove(string str) throw (string)
 {
@@ -67,17 +68,19 @@ bool HashTable::isExist(string str)
     unsigned long long int index = hash->hash(str) % HTsize;
     if (table[index] != NULL && !table[index]->isEmpty())
     {
-        ListElement *temp = table[index]->head;
-        while(temp->next != NULL)
+        ListElement *temp = table[index]->getHead();
+        while(temp->getNext() != NULL)
         {
-            if (temp->str == str)
+            if (temp->getStr() == str)
+            {
                 return true;
+            }
             else
             {
-                temp = temp->next;
+                temp = temp->getNext();
             }
         }
-        return temp->str == str;
+        return temp->getStr() == str;
     }
     else
         return false;
@@ -98,13 +101,13 @@ void HashTable::rebuildTable(unsigned int newSize, HashFunction *hashFunct)
     {
         if (oldTable[i] != NULL && !oldTable[i]->isEmpty())
         {
-            ListElement *temp = oldTable[i]->head;
-            while (temp->next != NULL)
+            ListElement *temp = oldTable[i]->getHead();
+            while (temp->getNext() != NULL)
             {
-                add(temp->str, temp->elemCounter);
-                temp = temp->next;
+                add(temp->getStr(), temp->getElemCounter());
+                temp = temp->getNext();
             }
-            add(temp->str, temp->elemCounter);
+            add(temp->getStr(), temp->getElemCounter());
         }
     }
     delete oldTable;
