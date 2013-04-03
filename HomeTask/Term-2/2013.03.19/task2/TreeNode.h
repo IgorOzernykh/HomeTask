@@ -1,6 +1,9 @@
 #pragma once
 #include <stdlib.h>
 
+/** TreeNode template class.
+    Each Node has pointers to its left and right children. */
+
 template <typename T>
 class TreeNode
 {
