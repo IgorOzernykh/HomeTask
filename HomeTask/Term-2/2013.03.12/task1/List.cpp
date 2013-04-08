@@ -93,16 +93,20 @@ void List::remove(string str) throw (string)
             delete toDel;
             return;
         }
+        throw string("No such word!");
     }
-
     else if (size == 1)
     {
-        delete head;
-        size--;
-        return;
+        if (head->getStr() == str)
+        {
+            delete head;
+            size--;
+            return;
+        }
+        throw string("No such word!");
     }
     else
-        throw string("No such word");
+        throw string("List is Empty!");
 }
 
 bool List::exists(string str)
