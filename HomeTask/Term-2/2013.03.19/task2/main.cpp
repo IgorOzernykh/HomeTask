@@ -71,6 +71,7 @@ int main()
             catch(exception *exc)
             {
                 cout << exc->what() << endl;
+                delete exc;
             }
             break;
         case '3':

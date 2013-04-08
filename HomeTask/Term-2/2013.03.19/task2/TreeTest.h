@@ -58,6 +58,7 @@ private slots:
         catch(std::exception *exc)
         {
             QVERIFY(std::string(exc->what()) == std::string("Nothing to delete: Tree is empty!"));
+            delete exc;
         }
     }
     void searchTest()
@@ -83,6 +84,7 @@ private slots:
         catch(std::exception *exc)
         {
             QVERIFY(std::string(exc->what()) == std::string("Nothing to delete: No such value!"));
+            delete exc;
         }
     }
 
