@@ -12,4 +12,5 @@ int main()
     tree->parse("input.txt");
     cout << "Result = " << tree->calc();
     tree->print("output.txt");
+    delete tree;
 }
