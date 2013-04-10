@@ -68,7 +68,7 @@ private slots:
         tree->add(47);
         tree->add(64);
         tree->add(71);
-        QVERIFY(tree->isExistInTree(64));
+        QVERIFY(tree->isExist(64));
     }
     void removeNonexistentValueTest()
     {

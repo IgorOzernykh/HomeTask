@@ -3,9 +3,6 @@
 #include "AlreadyExistExc.h"
 #include "NothingToDelExc.h"
 
-/** BinarySearchTree template class.
-    Has add, remove and search external functions */
-
 template <typename T>
 class BinarySearchTree
 {
@@ -16,7 +13,7 @@ public:
         if (root != NULL)
             delete root;
     }
-    bool isExistInTree (T item)
+    bool isExist (T item)
     {
         return isExistElement (root, item);
     }
@@ -30,22 +27,21 @@ public:
     {
         if (root == NULL)
             throw new NothingToDelExc("Tree is empty!");
-        if (!isExistInTree(item))
+        if (!isExist(item))
             throw new NothingToDelExc("No such value!");
         removeElement(root, item);
         ElemCounter--;
     }
+
     TreeNode<T> *getRoot()
     {
         return root;
     }
 
 private:
-    /** Recursive Functions that all necessary work in the tree */
     bool isExistElement(TreeNode<T> *currentNode, T item);
     void addElement(TreeNode<T> *&currentNode, T item) throw (AlreadyExistExc);
     void removeElement(TreeNode<T> *&currentNode, T item);
-    /** 3 Fuctions for removing elements */
     bool isLeaf(TreeNode<T> *currentNode);
     bool hasOneChild(TreeNode<T> *currentNode);
     TreeNode<T> *LeftMostChild(TreeNode<T> *currentNode);

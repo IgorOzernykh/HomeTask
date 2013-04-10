@@ -25,4 +25,6 @@ HEADERS += \
     TreeNode.h \
     AlreadyExistExc.h \
     TreeTest.h \
-    NothingToDelExc.h
+    NothingToDelExc.h \
+    Set.h \
+    SetTest.h
