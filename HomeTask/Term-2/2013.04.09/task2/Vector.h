@@ -12,12 +12,12 @@ public:
     Vector(const Vector<Dim> &vector);
     ~Vector() {}
     int& operator[](unsigned int index);
-    Vector<Dim> operator+(Vector<Dim> operand);
-    Vector<Dim> operator-(Vector<Dim> operand);
-    Vector<Dim> operator=(Vector<Dim> vector);
-    int operator*(Vector<Dim> operand);
-    bool operator==(Vector<Dim> vector);
-    bool operator!=(Vector<Dim> vector);
+    Vector<Dim> operator+(const Vector<Dim> &operand);
+    Vector<Dim> operator-(const Vector<Dim> &operand);
+    Vector<Dim> operator=(const Vector<Dim> &vector);
+    int operator*(const Vector<Dim> &operand);
+    bool operator==(const Vector<Dim> &vector);
+    bool operator!=(const Vector<Dim> &vector);
     bool isZero();
 private:
     int array[Dim];
@@ -57,54 +57,54 @@ int &Vector<Dim>::operator[](unsigned int index)
 }
 
 template <unsigned int Dim>
-Vector<Dim> Vector<Dim>::operator+(Vector<Dim> operand)
+Vector<Dim> Vector<Dim>::operator+(const Vector<Dim> &operand)
 {
     Vector<Dim> result;
     for (unsigned int i = 0; i < Dim; i++)
     {
-         result.array[i] = array[i] + operand[i];
+         result.array[i] = array[i] + operand.array[i];
     }
     return result;
 }
 
 template <unsigned int Dim>
-Vector<Dim> Vector<Dim>::operator-(Vector<Dim> operand)
+Vector<Dim> Vector<Dim>::operator-(const Vector<Dim> &operand)
 {
     Vector<Dim> result;
     for (unsigned int i = 0; i < Dim; i++)
     {
-         result.array[i] = array[i] - operand[i];
+        result.array[i] = array[i] - operand.array[i];
     }
     return result;
 }
 
 template <unsigned int Dim>
-Vector<Dim> Vector<Dim>::operator=(Vector<Dim> vector)
+Vector<Dim> Vector<Dim>::operator=(const Vector<Dim> &vector)
 {
     for (unsigned int i = 0; i < Dim; i++)
     {
-        array[i] = vector[i];
+        array[i] = vector.array[i];
     }
     return *this;
 }
 
 template <unsigned int Dim>
-int Vector<Dim>::operator*(Vector<Dim> operand)
+int Vector<Dim>::operator*(const Vector<Dim> &operand)
 {
     int result = 0;
     for (unsigned int i = 0; i < Dim; i++)
     {
-        result += array[i] * operand[i];
+        result += array[i] * operand.array[i];
     }
     return result;
 }
 
 template <unsigned int Dim>
-bool Vector<Dim>::operator==(Vector<Dim> vector)
+bool Vector<Dim>::operator==(const Vector<Dim> &vector)
 {
     for (unsigned int i = 0; i < Dim; i++)
     {
-        if (array[i] != vector[i])
+        if (array[i] != vector.array[i])
         {
             return false;
         }
@@ -113,11 +113,11 @@ bool Vector<Dim>::operator==(Vector<Dim> vector)
 }
 
 template <unsigned int Dim>
-bool Vector<Dim>::operator!=(Vector<Dim> vector)
+bool Vector<Dim>::operator!=(const Vector<Dim> &vector)
 {
     for (unsigned int i = 0; i < Dim; i++)
     {
-        if (array[i] != vector[i])
+        if (array[i] != vector.array[i])
         {
             return true;
         }
