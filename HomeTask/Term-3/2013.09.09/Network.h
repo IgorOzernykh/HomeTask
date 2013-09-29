@@ -1,7 +1,5 @@
 #pragma once
 #include "Computer.h"
-//#include <stdlib.h>
-//#include <time.h>
 #include "MyRandom.h"
 
 /** Network class is model of a local network.

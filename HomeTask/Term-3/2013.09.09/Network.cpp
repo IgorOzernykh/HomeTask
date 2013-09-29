@@ -36,7 +36,6 @@ Network::~Network()
         delete connectionList[i];
     }
     delete connectionList;
-    //delete randType;
 }
 
 void Network::addComputer (OS operationSystem)
@@ -82,8 +81,6 @@ void Network::infect (Computer *comp)
 {
     if (!comp->getInfectStatus())
     {
-        //srand(time(0));
-        //if (comp->getInfectChance() >= rand() % 101)
         if (comp->getInfectChance() >= randType->random() % 101)
         {
             comp->setInfectStatus(true);
