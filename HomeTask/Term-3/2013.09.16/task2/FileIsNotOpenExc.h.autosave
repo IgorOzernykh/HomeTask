@@ -1,0 +1,11 @@
+#pragma once
+#include <exception>
+#include <string>
+
+class FileIsNotOpenExc : public std::exception
+{
+public:
+     FileIsNotOpenExc() {}
+    virtual const char* what() const throw();
+    ~FileIsNotOpenExc() throw() {}
+};
