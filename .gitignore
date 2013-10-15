@@ -1,5 +1,5 @@
-*.pro.user
-
+*.pro.user*
+*autosave
 Makefile
 
 Makefile.*
@@ -14,5 +14,7 @@ release/*
 release\*
 debug/*
 debug\*
-build/*
-build\*
+*/debug/*
+*\debug\*
+build*/*
+build*\*
